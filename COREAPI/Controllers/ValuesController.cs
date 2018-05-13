@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using COREAPI.DATA;
 using COREAPI.Models;
+using COREAPI.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace COREAPI.Controllers
 {
-    [Route("api/[controller]")]
     public class ValuesController : Controller
     {
         private readonly NUAGEDbContext _dbContext;
@@ -29,15 +32,16 @@ namespace COREAPI.Controllers
             _roleManager = roleManager;
         }
         // GET api/values
-        [HttpGet]
+        [HttpGet("api/user/detail"), Authorize]
         public async Task<IEnumerable<string>> Get()
         {
             try
             {
+                var claim = HttpContext.User.CurrentUserID();
                 var list = _userManager.Users.ToList();
                 var role = new ApplicationRole();
                 role.Name = "Admin";
-                var d = await _roleManager.CreateAsync(role);
+                var d = await _roleManager.GetRoleNameAsync(role);
                 return new string[] { "value1", "value2" };
             }
             catch (Exception e)
@@ -45,7 +49,7 @@ namespace COREAPI.Controllers
 
                 throw;
             }
-         
+
         }
 
         // GET api/values/5
