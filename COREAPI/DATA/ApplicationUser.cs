@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using COREAPI.DATA.Domain;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace COREAPI.Models
     public class ApplicationUser : IdentityUser<int>
     {
         public int? UserType { get; set; }
+        public List<Contact> Contact { get; set; }
     }
 
 }

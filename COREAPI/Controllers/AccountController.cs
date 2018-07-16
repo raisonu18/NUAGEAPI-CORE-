@@ -65,8 +65,8 @@ namespace COREAPI.Controllers
                     var user = await _userManager.FindByEmailAsync(model.Email);
                     var role = _userManager.GetRolesAsync(user).Result[0];
                     var claim = new[] {
-                        new Claim(ClaimTypes.Name, user.UserName),
-                        new Claim(ClaimTypes.Email, user.Email),
+                        new Claim("Name", user.UserName),
+                        new Claim("Email", user.Email),
                         new Claim("UserID", user.Id.ToString()),
                         new Claim("Role", role),
                 };

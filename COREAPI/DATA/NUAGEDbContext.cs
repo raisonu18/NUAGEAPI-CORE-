@@ -1,4 +1,5 @@
-﻿using COREAPI.Models;
+﻿using COREAPI.DATA.Domain;
+using COREAPI.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,10 @@ namespace COREAPI.DATA
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Contact>()
+           .ToTable("Contacts");
         }
+        public DbSet<Contact> Contacts { get; set; }
+
     }
 }
