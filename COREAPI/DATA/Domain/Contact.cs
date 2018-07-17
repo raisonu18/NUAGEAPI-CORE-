@@ -1,4 +1,5 @@
 ﻿using COREAPI.Models;
+using COREAPI.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,6 @@ namespace COREAPI.DATA.Domain
         public string City { get; set; }
         public string State { get; set; }
         public int? Country { get; set; }
-        public string ContactType { get; set; }
-        public ApplicationUser applicationUser { get; set; }
+        public ContactType ContactType { get; set; }
     }
 }
