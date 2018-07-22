@@ -21,6 +21,6 @@ namespace COREAPI.Models
         public string City { get; set; }
         public string State { get; set; }
         public int? Country { get; set; }
-        public ContactType ContactType { get; set; }
+        public ContactType? ContactType { get; set; }
     }
 }

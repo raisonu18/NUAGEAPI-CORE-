@@ -15,21 +15,22 @@ namespace COREAPI.Controllers
 {
     public class ValuesController : Controller
     {
-        private readonly NUAGEDbContext _dbContext;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
+        private readonly IUnitOfWork _unitOfWork;
         public ValuesController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<ApplicationRole> roleManager,
-            NUAGEDbContext dbContext
+            IUnitOfWork unitOfWork
             )
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _dbContext = dbContext;
             _roleManager = roleManager;
+            _roleManager = roleManager;
+            _unitOfWork = unitOfWork;
         }
         // GET api/values
         [HttpGet("api/user/detail"), Authorize]
@@ -37,6 +38,8 @@ namespace COREAPI.Controllers
         {
             try
             {
+                IRepository<ApplicationUser> user = _unitOfWork.Get<ApplicationUser>();
+                var users = user.Query();
                 var claim = HttpContext.User.CurrentUserID();
                 var list = _userManager.Users.ToList();
                 var role = new ApplicationRole();
@@ -46,7 +49,6 @@ namespace COREAPI.Controllers
             }
             catch (Exception e)
             {
-
                 throw;
             }
 
