@@ -24,7 +24,7 @@ namespace COREAPI.Controllers
         {
             contactService = contact;
         }
-        [Route("Create"),HttpPost]
+        [Route("Create"), HttpPost]
         [HttpOptions]
         public void CreateContact([FromBody]ContactModel model)
         {
@@ -40,7 +40,6 @@ namespace COREAPI.Controllers
             {
                 throw new ApiException(exception.GetExceptionMessage());
             }
-        
         }
         [Route("list"), HttpGet]
         [HttpOptions]
@@ -48,7 +47,7 @@ namespace COREAPI.Controllers
         {
             try
             {
-               return contactService.GetContacts();
+                return contactService.GetContacts();
             }
             catch (ApiException)
             {
@@ -58,7 +57,40 @@ namespace COREAPI.Controllers
             {
                 throw new ApiException(exception.GetExceptionMessage());
             }
-
+        }
+        [Route("edit/{id:int}"), HttpGet]
+        [HttpOptions]
+        public ContactModel EditContact(int id)
+        {
+            try
+            {
+                return contactService.EditContact(id);
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                throw new ApiException(exception.GetExceptionMessage());
+            }
+        }
+        [Route("update"), HttpPost]
+        [HttpOptions]
+        public void UpdateContact([FromBody]ContactModel model)
+        {
+            try
+            {
+                contactService.UpdateContact(model);
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                throw new ApiException(exception.GetExceptionMessage());
+            }
         }
     }
 }

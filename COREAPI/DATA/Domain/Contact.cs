@@ -23,5 +23,6 @@ namespace COREAPI.DATA.Domain
         public string State { get; set; }
         public int? Country { get; set; }
         public ContactType? ContactType { get; set; }
+        public bool Status { get; set; }
     }
 }

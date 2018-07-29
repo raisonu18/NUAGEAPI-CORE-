@@ -11,5 +11,7 @@ namespace COREAPI.Services
     {
         void CreateContact([FromBody]ContactModel model);
         IEnumerable<ContactModel> GetContacts();
+        ContactModel EditContact(int id);
+        void UpdateContact([FromBody]ContactModel model);
     }
 }
