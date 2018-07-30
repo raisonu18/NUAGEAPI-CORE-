@@ -23,8 +23,11 @@ namespace COREAPI.DATA
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Contact>()
            .ToTable("Contacts");
+            modelBuilder.Entity<Product>()
+           .ToTable("Product");
         }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Product> Product { get; set; }
 
     }
 }
