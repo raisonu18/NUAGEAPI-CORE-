@@ -25,9 +25,12 @@ namespace COREAPI.DATA
            .ToTable("Contacts");
             modelBuilder.Entity<Product>()
            .ToTable("Product");
+            modelBuilder.Entity<Employee>()
+          .ToTable("Employee");
         }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<Employee> Employee { get; set; }
 
     }
 }

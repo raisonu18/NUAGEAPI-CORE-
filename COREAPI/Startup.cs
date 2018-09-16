@@ -49,6 +49,8 @@ namespace COREAPI
             // Add application services.
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IContactService, ContactService>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
