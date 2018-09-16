@@ -1,36 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
-using COREAPI.DATA;
-using COREAPI.DATA.Domain;
 using COREAPI.Models;
 using COREAPI.Services;
 using COREAPI.Services.Imp;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace COREAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Contact"), Authorize]
-    public class ContactController : Controller
+    [Route("api/Product"), Authorize]
+    public class ProductController : Controller
     {
-        private readonly IContactService contactService;
-        public ContactController(IContactService contact)
+        private readonly IProductService productService;
+        public ProductController(IProductService product)
         {
-            contactService = contact;
+            productService = product;
         }
         [Route("Create"), HttpPost]
         [HttpOptions]
-        public void CreateContact([FromBody]ContactModel model)
+        public void CreateProduct([FromBody]ProductModel model)
         {
             try
             {
-                contactService.CreateContact(model);
+                productService.CreateProduct(model);
             }
             catch (ApiException)
             {
@@ -43,11 +39,11 @@ namespace COREAPI.Controllers
         }
         [Route("list"), HttpGet]
         [HttpOptions]
-        public IEnumerable<ContactModel> GetContacts()
+        public IEnumerable<ProductModel> GetProducts()
         {
             try
             {
-                return contactService.GetContacts();
+                return productService.GetProducts();
             }
             catch (ApiException)
             {
@@ -60,11 +56,11 @@ namespace COREAPI.Controllers
         }
         [Route("edit/{id:int}"), HttpGet]
         [HttpOptions]
-        public ContactModel EditContact(int id)
+        public ProductModel EditProducts(int id)
         {
             try
             {
-                return contactService.EditContact(id);
+                return productService.EditProducts(id);
             }
             catch (ApiException)
             {
@@ -77,11 +73,11 @@ namespace COREAPI.Controllers
         }
         [Route("update"), HttpPost]
         [HttpOptions]
-        public void UpdateContact([FromBody]ContactModel model)
+        public void UpdateProduct([FromBody]ProductModel model)
         {
             try
             {
-                contactService.UpdateContact(model);
+                productService.UpdateProduct(model);
             }
             catch (ApiException)
             {

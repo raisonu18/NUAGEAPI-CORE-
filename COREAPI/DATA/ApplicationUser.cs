@@ -12,7 +12,6 @@ namespace COREAPI.Models
     public class ApplicationUser : IdentityUser<int>
     {
         public int? UserType { get; set; }
-        public List<Contact> Contact { get; set; }
     }
 
 }

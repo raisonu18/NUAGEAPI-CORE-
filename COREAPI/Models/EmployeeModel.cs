@@ -1,0 +1,30 @@
+﻿using COREAPI.Models.Enums;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace COREAPI.Models
+{
+    public class EmployeeModel
+    {
+        public int EmployeeID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string WhatsAppNumber { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public DateTime JoiningDate { get; set; }
+        public string Designation { get; set; }
+        public DateTime? RelievingDate { get; set; }
+        public float Salary { get; set; }
+        public float? HolidayIncentive { get; set; }
+        public float? OverTimeIncentive { get; set; }
+        public string ProfileImage { get; set; }
+        public string DocumentNumber { get; set; }
+        public EmployeeType EmployeeType { get; set; }
+        public string UniqueId { get; set; }
+    }
+}

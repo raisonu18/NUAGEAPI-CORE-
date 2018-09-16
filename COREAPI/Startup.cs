@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using COREAPI.DATA;
 using COREAPI.Models;
 using COREAPI.Services;
+using COREAPI.Services.Imp;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -46,7 +47,10 @@ namespace COREAPI
                 options.Password.RequireUppercase = false;
             });
             // Add application services.
-            //  services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IContactService, ContactService>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
