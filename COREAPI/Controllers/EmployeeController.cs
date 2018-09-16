@@ -54,5 +54,22 @@ namespace COREAPI.Controllers
                 throw new ApiException(exception.GetExceptionMessage());
             }
         }
+        [Route("edit/{id:int}"), HttpGet]
+        [HttpOptions]
+        public EmployeeModel EditEmployee(int id)
+        {
+            try
+            {
+                return employeeService.EditEmployee(id);
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                throw new ApiException(exception.GetExceptionMessage());
+            }
+        }
     }
 }

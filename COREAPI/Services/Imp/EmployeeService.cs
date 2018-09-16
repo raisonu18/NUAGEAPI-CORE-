@@ -36,6 +36,7 @@ namespace COREAPI.Services.Imp
             employeeRepository.Add(employee);
             unitOfWork.SaveChanges();
         }
+
         public IEnumerable<EmployeeModel> Getemployee()
         {
             IRepository<Employee> employeeRepository = unitOfWork.Get<Employee>();
@@ -57,6 +58,10 @@ namespace COREAPI.Services.Imp
                 EmployeeType = a.EmployeeType,
             });
             return employee;
+        }
+        public EmployeeModel EditEmployee(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
