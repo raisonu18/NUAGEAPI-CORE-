@@ -12,5 +12,6 @@ namespace COREAPI.Services
         void CreateEmployee([FromBody]EmployeeModel model);
         IEnumerable<EmployeeModel> Getemployee();
         EmployeeModel EditEmployee(int id);
+        void UpdateEmployee([FromBody]EmployeeModel model);
     }
 }

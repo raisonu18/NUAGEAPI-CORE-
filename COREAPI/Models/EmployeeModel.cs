@@ -17,14 +17,16 @@ namespace COREAPI.Models
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public DateTime JoiningDate { get; set; }
+        public string JoiningDateString { get; set; }
         public string Designation { get; set; }
         public DateTime? RelievingDate { get; set; }
-        public float Salary { get; set; }
-        public float? HolidayIncentive { get; set; }
-        public float? OverTimeIncentive { get; set; }
+        public decimal Salary { get; set; }
+        public decimal? HolidayIncentive { get; set; }
+        public decimal? OverTimeIncentive { get; set; }
         public string ProfileImage { get; set; }
         public string DocumentNumber { get; set; }
         public EmployeeType EmployeeType { get; set; }
+        public string EmployeeTypeValue { get; set; }
         public string UniqueId { get; set; }
     }
 }

@@ -71,5 +71,22 @@ namespace COREAPI.Controllers
                 throw new ApiException(exception.GetExceptionMessage());
             }
         }
+        [Route("update"), HttpPost]
+        [HttpOptions]
+        public void UpdateEmployee([FromBody]EmployeeModel model)
+        {
+            try
+            {
+                employeeService.UpdateEmployee(model);
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                throw new ApiException(exception.GetExceptionMessage());
+            }
+        }
     }
 }
